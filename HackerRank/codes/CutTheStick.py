@@ -1,21 +1,26 @@
 #!/bin/python
 
+import sys
+
+#!/bin/python
+
 def find_smalest(lists):
     return min(lists)
 
 n = int(raw_input().strip())
 arr = map(int, raw_input().strip().split(' '))
-while arr:
-    smallest = find_smalest(arr)
-    print 'smallest value ',smallest
-    print 'Lenght of array ', len(arr)
-    for index, value in enumerate(arr):
-        temp = value - smallest
-        #print 'value',value
-        #print 'temp', temp
-        if temp == 0:
-            del arr[index]
-        else:
-            arr[index] = temp
-    print 'array after 1 iteration', arr
 
+while arr:
+    print len(arr)
+    smallest = find_smalest(arr)
+    actual_size = len(arr)
+    i = 0
+    while arr:
+        if arr[i] - smallest ==0:
+            del arr[i]
+            actual_size-=1
+        else:
+            arr[i] = arr[i]-smallest
+            i+=1
+        if i == actual_size:
+            break
